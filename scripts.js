@@ -2,8 +2,8 @@ const form = document.querySelector('form');
 const amount = document.querySelector('#amount');
 const currency = document.querySelector('#currency');
 const footer = document.querySelector('footer');
-let description = document.querySelector('#description');
-let result = document.querySelector('#result');
+const description = document.querySelector('#description');
+const result = document.querySelector('#result');
 
 let rates = {
   USD: undefined,
@@ -59,6 +59,9 @@ form.addEventListener('submit', (e)=>{
 function convertCurrency(amount, price, symbol) {
   try {
     description.textContent = `${symbol}1 = ${formatCurrencyBRL(price)}`;
+
+    let total = amount * price;
+    result.textContent = formatCurrencyBRL(total)
 
 
     footer.classList.add('show-result');
