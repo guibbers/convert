@@ -58,10 +58,9 @@ form.addEventListener('submit', (e)=>{
 
 function convertCurrency(amount, price, symbol) {
   try {
-    const newDescription = `${symbol}1 = R$${price}`;
-    const newResult = `R$ ${(amount * price).toFixed(2)}`
-    description.innerHTML = newDescription;
-    result.innerHTML = newResult;
+    description.textContent = `${symbol}1 = ${formatCurrencyBRL(price)}`;
+
+
     footer.classList.add('show-result');
   } catch (error) {
     footer.classList.remove('show-result')
@@ -69,4 +68,12 @@ function convertCurrency(amount, price, symbol) {
   }
   
   
+}
+
+function formatCurrencyBRL(value) {  
+  
+  return Number(value).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
 }
